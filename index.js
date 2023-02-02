@@ -47,24 +47,59 @@ function playRound(pChoice, cChoice) {
 
 //console.log(playRound('rock'));
 
-function game() {
+function game(choice) {
     let result = ''
     let wins = ''
     let score = 0;
-    for(let i = 0; i < 5; i++) {
-        let player = prompt("Choose: rock, paper, or scissors ")
-         arrayResult = playRound(player).split(" ")
-         FinalarrayResult = arrayResult.includes("win,")
-        
-         if (FinalarrayResult) {
-            score+=1
-         }
-         result += playRound(player) + ". "
-    }
     
-    return result +  score + " out of 5 won"
+    arrayResult = playRound(choice).split(" ")
+    console.log(arrayResult)
+    FinalarrayResult = arrayResult.includes("win,")
+    console.log(FinalarrayResult)
+        
+    if (FinalarrayResult) {
+         score+=1
+     }
+
+    
+    return  score + " out of 5 won"
 
 }
 
-console.log(game());
+
+
+let rockz = document.querySelector("#rock");
+
+new1 = rockz.addEventListener('click', () => { divider.textContent = playRound('rock'); 
+    scorekeep.textContent = game('rock') })
+
+let paperz = document.querySelector("#paper");
+
+paperz.addEventListener('click', () => { divider.textContent = playRound('paper'); 
+    scorekeep.textContent = game('paper'); })
+ 
+let scissorz = document.querySelector("#scissor")
+
+scissorz.addEventListener('click', () => { divider.textContent = playRound('scissors'); 
+    scorekeep.textContent = game('scissors') })
+
+let newBody = document.querySelector('body')
+
+let divider = document.createElement("div")
+divider.classList.add("results")
+divider.style.border = "thick solid black"
+divider.style.backgroundColor = "white";
+
+newBody.appendChild(divider)
+
+let scorekeep = document.createElement("div")
+scorekeep.classList.add("scorekeeper")
+scorekeep.style.border = "solid green"
+scorekeep.style.backgroundcolor = 'white';
+
+newBody.appendChild(scorekeep)
+
+// divider.appendChild(new1)
+// divider.appendChild(new2)
+// divider.appendChild(new3)
 
